@@ -48,6 +48,63 @@ public class DatatypeExamples {
     long extremLongNumber = 3_000_000_000L;
 
 
-    
+    // float / double literal
+    double literalExampleB = 5.0;
+    System.out.println(literalExampleB);
+
+    literalExampleB = .567;
+    System.out.println(literalExampleB);
+    literalExampleB = 11.;
+    System.out.println(literalExampleB);
+    literalExampleB = 0.5e3;
+    System.out.println(literalExampleB);
+    literalExampleB = -0.5e-2;
+    System.out.println(literalExampleB);
+    literalExampleB = .567D;
+    System.out.println(literalExampleB);
+
+    float literalExampleC = 0.5F;
+    System.out.println(literalExampleC);
+
+
+    // boolean literal
+    boolean isRaining = false; // true
+
+    // char literal
+
+    char literalExampleD = 'A';
+    System.out.println(literalExampleD);
+    literalExampleD = '\'';
+    System.out.println(literalExampleD);
+    literalExampleD = '\u2764';
+    System.out.println(literalExampleD);
+
+
+    // String literal
+    String literalTextExample = "Hier steht \nein \\\"toller\" Text \u2764 ";
+    System.out.println(literalTextExample);
+
+    String htmlCode = "<html>\n" +
+                      "\t<head></head>\n" +
+                      "\t<body>\n" +
+                        "\t\t<h1>Tolle Webseite</h1>\n" +
+                      "\t</body>\n" +
+                      "</html>";
+
+    System.out.println(htmlCode);
+
+    String htmlCodeTextBlock = """
+      <html>
+        <head><head>
+        <body>
+          <h1>Tolle "Webseite"</h1>
+          <p>'h' "toll" \u2764</p>
+        </body>
+      </html>
+      """;
+
+    System.out.println(htmlCodeTextBlock);
+
+
   }
 }
