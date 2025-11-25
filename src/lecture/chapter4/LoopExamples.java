@@ -49,6 +49,7 @@ void main(){
   for(int i = 0; i < words.length; i++){
     if(words[i].equals("ein")){
       IO.println("Ein - gefunden: Schleife abgebrochen");
+      // Bricht die restliche Schleifenverarbeitung ab
       break;
     }
     IO.println(words[i]);
@@ -60,6 +61,7 @@ void main(){
 
     if(word.equals("ist")){
       IO.println("Wort übersprungen");
+      // überspringt den aktuellen Schleifendurchlauf
       continue;
     }
 
@@ -74,5 +76,11 @@ void main(){
       break;
     }
   }
+
+  IO.println("For Schleife - mal anders:");
+  for(count = 100; count > 0; count = count - 5 ){
+    IO.println(count);
+  }
+
 
 }
