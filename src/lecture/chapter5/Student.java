@@ -21,15 +21,17 @@ public class Student {
     IO.println("und wird wach!!!!!");
   }
 
-  public void drink(float amount, double alcoholInPercentage){
+  public String drink(float amount, double alcoholInPercentage){
     this.drink(amount);
     IO.println("und betrunken!!!!!!!!!!");
+    return "besoofen";
   }
 
   public void drink(double amountOfPoison, float amount){
     this.drink(amount);
     IO.println("und betrunken!!!!!!!!!!");
   }
+
 
 
   public int getId() {

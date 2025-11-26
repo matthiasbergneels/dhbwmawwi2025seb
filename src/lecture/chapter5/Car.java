@@ -4,15 +4,18 @@ import java.lang.invoke.StringConcatFactory;
 
 public class Car {
 
-  // Attribute
+  // Instanz-Attribute
   private String color;
   private int hp = 150;
   private String licensePlate;
   private double currentSpeed;
-  public final String brand;
+  public final CarBrand brand;
+
+  // Klassen-Attribute
+  private static int carCount = 0;
 
   // Konstruktor
-  public Car(String color, int hp, String licensePlate, String brand) {
+  public Car(String color, int hp, String licensePlate, CarBrand brand) {
     // Objekt-Selbstreferenz "this" wird genutzt um auf die Attribute zuzugreifen (bei Namenskonflikten)
     this.setColor(color);
     this.setHp(hp);
@@ -20,17 +23,19 @@ public class Car {
     this.brand = brand;
 
     this.currentSpeed = 0.0;
+
+    carCount++;
   }
 
   public Car(String brand, int hp){
-    this(brand, hp, "XX-YY 1234", "BMW");
+    this(brand, hp, "XX-YY 1234", CarBrand.BMW);
   }
 
   public Car(){
-    this("Schwarz", 150, "XX-YY 1234", "Kia");
+    this("Schwarz", 150, "XX-YY 1234", CarBrand.KIA);
   }
 
-  // Methoden
+  // Instanz-Methoden
   // Aufbau einer Methode [Modifier] Rückgabetyp Methodenname([Parameterliste])
 
   void accelerate(double deltaSpeed){
@@ -87,4 +92,25 @@ public class Car {
     this.licensePlate = licensePlate;
   }
 
+  /* --> Depricated -> vor Java 18 für Aufräumarbeiten vor dem Garbage Collector
+  @Override
+  protected void finalize() {
+    System.out.println("Auto der Marke " + this.brand + " wird verschrottet!");
+    carCount--;
+  }
+   */
+
+
+  // Klassen-Methoden
+  public static int getCarCount(){
+    return  carCount;
+  }
+
+  public static void printCarInformation(Car currentCar){
+    System.out.println("========= Auto Information =========");
+    System.out.println("Farbe: " + currentCar.color);
+    System.out.println("Marke: " + currentCar.brand);
+    System.out.println("Nummernschild: " + currentCar.licensePlate);
+    System.out.println("Leistung: " + currentCar.hp);
+  }
 }

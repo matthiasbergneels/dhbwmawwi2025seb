@@ -4,10 +4,10 @@ public class CarRun {
 
   public static void main(String[] args) {
 
-    int numberA = 100;
+    System.out.println("Anzahl Autos: " + Car.getCarCount());
 
-    Car myCar = new Car("Blau", 200, "HD-AB 1234", "Volkswagen");
-    Car yourCar = new Car("Kackbraun", 500, "MA-BA 6789", "Porsché");
+    Car myCar = new Car("Blau", 200, "HD-AB 1234", CarBrand.VOLKSWAGEN);
+    Car yourCar = new Car("Kackbraun", 500, "MA-BA 6789", CarBrand.PORSCHÉ);
 
     /*
     myCar.color = "Blau";
@@ -28,8 +28,10 @@ public class CarRun {
 
     myCar.setColor("Kackbraun");
 
-    IO.println("Mein Auto ist ein " + myCar.brand + " in der Farbe " + myCar.getColor());
-    IO.println("Mein Auto ist ein " + yourCar.brand + " in der Farbe " + yourCar.getColor());
+    IO.println("Mein Auto ist ein " + myCar.brand + "(" + myCar.brand.getPriceClass() + ") in der Farbe " + myCar.getColor());
+    IO.println("Dein Auto ist ein " + yourCar.brand + "(" + yourCar.brand.getPriceClass() + ") in der Farbe " + yourCar.getColor());
+
+
 
     myCar.accelerate(15);
     yourCar.accelerate(15);
@@ -43,5 +45,21 @@ public class CarRun {
     myCar.fullBrake();
     IO.println("Aktuelle Geschwindigkeit von meinem Auto: " + myCar.getCurrentSpeed());
     IO.println("Aktuelle Geschwindigkeit von deinem Auto: " + yourCar.getCurrentSpeed());
+
+
+    System.out.println("Anzahl Autos: " + Car.getCarCount());
+
+    new Car();
+    new Car();
+    new Car();
+    new Car();
+
+    Car.printCarInformation(myCar);
+    Car.printCarInformation(yourCar);
+
+
+
+    System.out.println("Anzahl Autos: " + Car.getCarCount());
+
   }
 }
