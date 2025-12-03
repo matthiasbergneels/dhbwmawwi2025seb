@@ -1,6 +1,6 @@
 package lecture.chapter5;
 
-public class CarRun {
+public class CarRun{
 
   public static void main(String[] args) {
 
@@ -56,8 +56,6 @@ public class CarRun {
 
     Car.printCarInformation(myCar);
     Car.printCarInformation(yourCar);
-
-
 
     System.out.println("Anzahl Autos: " + Car.getCarCount());
 
