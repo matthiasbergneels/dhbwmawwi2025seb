@@ -20,4 +20,9 @@ public class Fish extends Animal {
   public void setSaltWater(boolean saltWater) {
     isSaltWater = saltWater;
   }
+
+  @Override
+  public void breath() {
+    IO.println("Der Fish " + getDescription() + " atmet durch die Kiemen!");
+  }
 }

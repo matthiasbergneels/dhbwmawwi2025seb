@@ -1,6 +1,6 @@
 package lecture.chapter6;
 
-public class Dog extends Animal {
+public final class Dog extends Animal {
 
   private String breed;
 
@@ -10,10 +10,22 @@ public class Dog extends Animal {
   }
 
   @Override
+  public void breath() {
+    IO.println("Der Hund " + description + " atmet! *hechelhechel*");
+  }
+
+  @Override
   public void eat(){
     super.eat();
     IO.println("ganz viel Fleisch!");
   }
+
+  /* --> final move Methode in Animal kann nicht überschrieben werden
+  @Override
+  public void move(){
+
+  }
+   */
 
   // Überladene Methode aus Animal
   public void eat(float amount){

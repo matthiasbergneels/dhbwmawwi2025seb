@@ -8,6 +8,7 @@ public class MyLittlerSubPackageFarm {
 
     public static void main(String[] args) {
 
+      /*
       Animal myAnimal = new Animal(15.5f, 20.0f, "Tierhalt");
 
       myAnimal.breath();
@@ -15,6 +16,8 @@ public class MyLittlerSubPackageFarm {
       myAnimal.eat();
       IO.println(myAnimal.toString());
       // IO.println(myAnimal.description); --> protected
+
+       */
 
       Dog myDog = new Dog(75.0f, 73.0f, "Bello", "Broholmer");
 

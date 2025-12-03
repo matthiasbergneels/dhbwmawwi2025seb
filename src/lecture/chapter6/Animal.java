@@ -1,6 +1,6 @@
 package lecture.chapter6;
 
-public class Animal {
+public abstract class Animal {
 
   private float size;
   private float weight;
@@ -13,15 +13,13 @@ public class Animal {
     this.description = description;
   }
 
-  public void breath(){
-    IO.println("Das Tier " + description + " atmet!");
-  }
+  public abstract void breath();
 
   public void eat(){
     IO.println("Das Tier " + description + " frisst!");
   }
 
-  public void move(){
+  public final void move(){
     IO.println("Das Tier " + description + " bewegt sich!");
   }
 
