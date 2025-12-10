@@ -58,6 +58,7 @@ public class MyLittleFarm {
 
     Animal[] animalBox = new Animal[5];
 
+    // Narrowing Cast
     animalBox[0] = myDog;
     animalBox[1] = myFish;
     animalBox[2] = new Dog(75.0f, 73.0f, "Hasso", "Schäferhund");
@@ -71,10 +72,39 @@ public class MyLittleFarm {
       animal.eat();
 
       if(animal instanceof Dog) {
+        // Widening Cast
         Dog currentDog = (Dog) animal;
         currentDog.bark();
+      } else {
+        IO.println("Kein Hund!");
       }
+
+      if(animal instanceof Fish currentFish) {
+        currentFish.bubble();
+      }
+
     }
+
+    // Alternative ohne Polymorphie
+    Dog[] dogBox = new Dog[4];
+    Fish[] fishBox = new Fish[4];
+    // Bird[]..
+    // Horse[]...
+
+    for(Dog dog : dogBox) {
+      dog.move();
+      dog.breath();
+      dog.eat();
+    }
+
+    for(Fish fish : fishBox) {
+      fish.move();
+      fish.breath();
+      fish.eat();
+    }
+
+    //...
+
 
 
 
