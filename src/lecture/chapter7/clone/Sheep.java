@@ -1,5 +1,7 @@
 package lecture.chapter7.clone;
 
+import java.io.Serializable;
+
 public class Sheep implements Cloneable {
 
   private String name;
