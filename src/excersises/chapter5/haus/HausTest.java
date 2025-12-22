@@ -19,5 +19,8 @@ public class HausTest {
       System.out.println("Das Haus hat " + currentHaus.getTueren() + " Türen, "
                                         + currentHaus.getFenster() + " Fenster");
     }
+
+    Haus myNewHaus = new HausBuilder().baueFlachDach().setTueren(5).setFenster(15).setEtagen(2).finalizeHaus();
+    System.out.println(myNewHaus);
   }
 }

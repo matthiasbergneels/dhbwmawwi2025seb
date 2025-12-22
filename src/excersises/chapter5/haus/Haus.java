@@ -60,6 +60,13 @@ public class Haus {
     this(tueren, DEFAULT_FENSTER_ANZAHL, DEFAULT_ETAGEN_ANZAHL, DEFAULT_FLAECHE, DEFAULT_STRASSE, DEFAULT_HAUSNUMMER, DEFAULT_PLZ, DEFAULT_ORT, false);
   }
 
+  /*
+  // Fenster Konstruktor
+  public Haus(int fenster) {
+    this(DEFAULT_TUEREN_ANZAHL, fenster, DEFAULT_ETAGEN_ANZAHL, DEFAULT_FLAECHE, DEFAULT_STRASSE, DEFAULT_HAUSNUMMER, DEFAULT_PLZ, DEFAULT_ORT, false);
+  }
+   */
+
   // Nicht so die geilste Lösung!
   // Fenster Konstruktor
   public Haus(byte fenster) {

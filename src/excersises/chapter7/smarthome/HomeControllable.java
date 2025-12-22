@@ -1,4 +1,4 @@
-package excersises.smarthome;
+package excersises.chapter7.smarthome;
 
 public interface HomeControllable {
   void turnOn();

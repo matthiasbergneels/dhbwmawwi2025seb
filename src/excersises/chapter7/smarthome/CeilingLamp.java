@@ -1,4 +1,4 @@
-package excersises.smarthome;
+package excersises.chapter7.smarthome;
 
 public class CeilingLamp implements HomeControllable {
   private Room room;

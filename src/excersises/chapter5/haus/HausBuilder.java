@@ -43,7 +43,9 @@ public class HausBuilder {
   }
 
   public Haus finalizeHaus(){
-    return this.neuesHaus;
+    Haus finalizedHaus = this.neuesHaus;
+    this.neuesHaus = null;
+    return finalizedHaus;
   }
 
 }
