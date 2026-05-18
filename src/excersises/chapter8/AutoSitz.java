@@ -9,22 +9,14 @@ public class AutoSitz {
         WHITE, BLACK, BLUE, RED, GREEN, YELLOW;
 
         public String toString(){
-            switch(this){
-                case WHITE:
-                    return "Weiss";
-                case BLACK:
-                    return "Schwarz";
-                case BLUE:
-                    return "Blau";
-                case RED:
-                    return "Rot";
-                case GREEN:
-                    return "Grün";
-                case YELLOW:
-                    return "Gelb";
-                default:
-                    return "Nicht definiert";
-            }
+            return switch(this) {
+                case WHITE -> "Weiss";
+                case BLACK -> "Schwarz";
+                case BLUE -> "Blau";
+                case RED -> "Rot";
+                case GREEN -> "Grün";
+                case YELLOW -> "Gelb";
+            };
         }
     }
 
@@ -34,7 +26,6 @@ public class AutoSitz {
         if (ledersitz && !(farbe == SeatColor.WHITE || farbe == SeatColor.BLACK)) {
             throw new FalscheParameter(ledersitz, farbe);
         }
-
 
         this.setFarbe(farbe);
         this.setLedersitz(ledersitz);
