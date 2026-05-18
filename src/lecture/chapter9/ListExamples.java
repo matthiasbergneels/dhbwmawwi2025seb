@@ -102,6 +102,8 @@ public class ListExamples {
     double currentValue = doubleValues.get(0);
 
 
+
+
     // Beispiel 1: Löschen während Iteration --> Element wird übersprungen
     List<String> deleteList = new ArrayList<String>();
     deleteList.add("Banane");

@@ -1,0 +1,54 @@
+package lecture.chapter9;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class SetExamples {
+
+  static void main() {
+
+    Set<String> fruits = new TreeSet<>();
+
+    fruits.add("Apfel");
+    fruits.add("Banane");
+    fruits.add("Kirsche");
+    fruits.add("Orange");
+    fruits.add("Birne");
+    fruits.add("Erdbeere");
+    fruits.add("Melone");
+
+    for(String fruit : fruits) {
+      System.out.println(fruit);
+    }
+
+
+    Set<Integer> numbers = new TreeSet<>();
+    numbers.add(10);
+    numbers.add(28);
+    numbers.add(13);
+    numbers.add(73);
+    numbers.add(57);
+    numbers.add(67);
+    numbers.add(-67);
+
+    for(int number : numbers) {
+      System.out.println(number);
+    }
+
+
+    Set<Student> students = new TreeSet<>();
+
+    students.add(new Student(4711, "Müller", "Gabi", 23));
+    students.add(new Student(3172, "Mayer", "Rudolf", 28));
+    students.add(new Student(7312, "Schmidt", "Gertrude", 21));
+    students.add(new Student(3172, "Mayer", "Rudolf", 28));
+    students.add(new Student(6392, "Müller", "Franz", 25));
+    students.add(new Student(3172, "Zeus", "Mechtild", 21));
+
+
+    for(Student student : students) {
+      System.out.println(student);
+    }
+  }
+}
