@@ -102,6 +102,40 @@ public class ListExamples {
     double currentValue = doubleValues.get(0);
 
 
+    // Beispiel 1: Löschen während Iteration --> Element wird übersprungen
+    List<String> deleteList = new ArrayList<String>();
+    deleteList.add("Banane");
+    deleteList.add("Apple");
+    deleteList.add("Kirsche");
+    deleteList.add("Mango");
 
+    System.out.println("Iteration mit Löschen (Kirsche wird übersprungen):");
+    for (int i = 0; i < deleteList.size(); i++) {
+      String current = deleteList.get(i);
+      if (current.equals("Apple")) {
+        deleteList.remove(i); // entfernt "Apple" an i=1, "Kirsche" rückt auf i=1 vor --> i++ überspringt sie
+      } else {
+        System.out.println(current);
+      }
+    }
+    // Ausgabe: Banane, Mango  (Kirsche wird übersprungen)
+
+    // Beispiel 2: Einfügen während Iteration --> Element wird doppelt ausgegeben
+    List<String> insertList = new ArrayList<String>();
+    insertList.add("Banane");
+    insertList.add("Apple");
+    insertList.add("Kirsche");
+
+    /* --> Achtung: Endlosschleife!
+    System.out.println("Iteration mit Einfügen (Apple wird doppelt ausgegeben):");
+    for (int i = 0; i < insertList.size(); i++) {
+      String current = insertList.get(i);
+      System.out.println(current);
+      if (current.equals("Banane")) {
+        insertList.add(i, "Neu"); // schiebt "Banane" auf i+1 --> wird nächste Runde nochmal gelesen
+      }
+    }
+    // Ausgabe: Banane, Banane, Apple, Kirsche  (Banane erscheint zweimal, obwohl nur einmal eingefügt)
+     */
   }
 }
