@@ -2,9 +2,7 @@ package lecture.chapter9;
 
 import lecture.chapter5.Car;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class ListExamples {
 
@@ -139,5 +137,41 @@ public class ListExamples {
     }
     // Ausgabe: Banane, Banane, Apple, Kirsche  (Banane erscheint zweimal, obwohl nur einmal eingefügt)
      */
+
+
+
+    // Sorting Lists
+
+    List<Student> students = new ArrayList<>();
+
+    students.add(new Student(4711, "Müller", "Gabi", 23));
+    students.add(new Student(3172, "Mayer", "Rudolf", 28));
+    students.add(new Student(7312, "Schmidt", "Gertrude", 21));
+    students.add(new Student(7312, "Adam", "Gertrude", 21));
+    students.add(new Student(8712, "Adam", "Gertrude", 21));
+    students.add(new Student(3172, "Mayer", "Rudolf", 28));
+    students.add(new Student(6392, "Müller", "Franz", 25));
+    students.add(new Student(3172, "Zeus", "Mechtild", 21));
+
+    System.out.println("Students ArrayList: ");
+    for(Student student : students){
+      System.out.println(student);
+    }
+
+    // Sortin by natural Order
+    Collections.sort(students);
+
+    System.out.println("Students ArrayList - natural Order: ");
+    for(Student student : students){
+      System.out.println(student);
+    }
+
+    Collections.sort(students, new StudentSortedByName());
+    System.out.println("Students ArrayList - by Name: ");
+    for(Student student : students){
+      System.out.println(student);
+    }
+
+
   }
 }
