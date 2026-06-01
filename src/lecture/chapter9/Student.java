@@ -1,5 +1,7 @@
 package lecture.chapter9;
 
+import java.util.Objects;
+
 public class Student implements Comparable<Student> {
 
   private int id;
@@ -72,4 +74,66 @@ public class Student implements Comparable<Student> {
 
     return this.age - o.age;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    // Alias Check
+    if(this == obj) {
+      return true;
+    }
+
+    // Null Check
+    if(obj == null){
+      return false;
+    }
+
+    // Type Check
+    if(this.getClass() != obj.getClass()) {
+      return false;
+    }
+
+    // Attribute check
+    Student studentObj = (Student)obj;
+
+    if(this.id !=  studentObj.id) {
+      return false;
+    }
+
+    if(!this.familyName.equals(studentObj.familyName)) {
+      return false;
+    }
+
+    if(!this.firstName.equals(studentObj.firstName)) {
+      return false;
+    }
+
+    return this.age == studentObj.age;
+  }
+
+/*
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Student student = (Student) o;
+    return id == student.id && age == student.age && Objects.equals(familyName, student.familyName) && Objects.equals(firstName, student.firstName);
+  }
+ */
+
+  @Override
+  public int hashCode() {
+    return this.id ^ this.familyName.hashCode() ^ this.firstName.hashCode() ^ this.age;
+  }
+
+/*
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + Objects.hashCode(familyName);
+    result = 31 * result + Objects.hashCode(firstName);
+    result = 31 * result + age;
+    return result;
+  }
+
+ */
 }

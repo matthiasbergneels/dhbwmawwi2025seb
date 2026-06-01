@@ -99,9 +99,6 @@ public class ListExamples {
     // auto-unboxing
     double currentValue = doubleValues.get(0);
 
-
-
-
     // Beispiel 1: Löschen während Iteration --> Element wird übersprungen
     List<String> deleteList = new ArrayList<String>();
     deleteList.add("Banane");
@@ -147,10 +144,11 @@ public class ListExamples {
     students.add(new Student(4711, "Müller", "Gabi", 23));
     students.add(new Student(3172, "Mayer", "Rudolf", 28));
     students.add(new Student(7312, "Schmidt", "Gertrude", 21));
+    students.add(new Student(9162, "Ulf", "Uwe", 23));
     students.add(new Student(7312, "Adam", "Gertrude", 21));
     students.add(new Student(8712, "Adam", "Gertrude", 21));
     students.add(new Student(3172, "Mayer", "Rudolf", 28));
-    students.add(new Student(6392, "Müller", "Franz", 25));
+    students.add(new Student(6392, "Müller", "Friiiiiiiiiiiiiiiiiiiiiiiiiiiiitz", 25));
     students.add(new Student(3172, "Zeus", "Mechtild", 21));
 
     System.out.println("Students ArrayList: ");
@@ -172,6 +170,11 @@ public class ListExamples {
       System.out.println(student);
     }
 
+    Collections.sort(students, new StudentSortBySignCountInNames());
+    System.out.println("Students ArrayList - by NameLength: ");
+    for(Student student : students){
+      System.out.println(student);
+    }
 
   }
 }
