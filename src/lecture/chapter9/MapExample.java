@@ -10,7 +10,7 @@ public class MapExample {
   static void main() {
     Map<Integer, String> cities = new HashMap<Integer, String>();
 
-    cities.put(69190, "Walldorf");
+    cities.put(Integer.valueOf(69190), "Walldorf");
     cities.put(68165, "Mannheim");
     cities.put(69488, "Weinheim");
     cities.put(69168, "Wiesloch");

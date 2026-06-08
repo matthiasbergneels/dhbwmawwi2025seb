@@ -1,8 +1,7 @@
 package lecture.chapter9;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
+import java.sql.Array;
+import java.util.*;
 
 public class SetExamples {
 
@@ -60,6 +59,15 @@ public class SetExamples {
     System.out.println("Students by Name:");
     System.out.println("Anzahl Students: " + studentsByName.size());
     for(Student student : studentsByName) {
+      System.out.println(student);
+    }
+
+    System.out.println("Students by Age:");
+    System.out.println("Anzahl Students: " + studentsByName.size());
+    List<Student> studentListSortedbyAge = new ArrayList();
+    studentListSortedbyAge.addAll(students);
+    Collections.sort(studentListSortedbyAge, (s1, s2) -> Integer.compare(s1.getAge(), s2.getAge()));
+    for(Student student : studentListSortedbyAge) {
       System.out.println(student);
     }
 

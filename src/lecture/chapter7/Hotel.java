@@ -31,7 +31,7 @@ public class Hotel implements Bookable, Buildable {
   @Override
   public boolean book(int slots) throws NotEnoughFreeSlotsException{
 
-    if(slots > freeSlots() && slots < MAX_BOOKABLE_SLOTS) {
+    if(slots > freeSlots()) {
       //return false;
       throw new NotEnoughFreeSlotsException(slots, freeSlots());
     }
