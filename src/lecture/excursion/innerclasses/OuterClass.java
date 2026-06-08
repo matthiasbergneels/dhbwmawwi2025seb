@@ -4,6 +4,10 @@ import lecture.chapter7.Hotel;
 
 public class OuterClass {
 
+  interface Printable{
+    void printMessage(String message);
+  }
+
   private static String staticId = "Static ID: 4711";
 
   private String objectId;
@@ -11,14 +15,14 @@ public class OuterClass {
   // Inner Static nested Class
   public static class InnerStaticClass {
     void printMessage(String message){
-      System.out.println("Message from InnerStaticClass: " + message + " - Static ID: " + staticId);
+      System.out.println("Message from InnerStaticClass: " + message + " - Static ID: " + staticId + " - ClassContext: " + this.getClass().getName());
     }
   }
 
   // Inner Element Class
   public class InnerElementClass {
     void printMessage(String message){
-      System.out.println("Message from InnerElementClass: " + message + " - Object ID: " + objectId + " - Static ID: " + staticId);
+      System.out.println("Message from InnerElementClass: " + message + " - Object ID: " + objectId + " - Static ID: " + staticId + " - ClassContext: " + this.getClass().getName());
     }
   }
 
@@ -30,7 +34,20 @@ public class OuterClass {
 
     class InnerLocalClass{
       void printMessage(String message){
-        System.out.println("Message from InnerLocalClass: " + message + " - Object ID: " + objectId + " - Static ID: " + staticId);
+        System.out.println("Message from InnerLocalClass: " + message + " - Object ID: " + objectId + " - Static ID: " + staticId + " - ClassContext: " + this.getClass().getName());
+      }
+    }
+
+    InnerLocalClass innerLocalObject = new InnerLocalClass();
+    innerLocalObject.printMessage(messageText);
+
+  }
+
+  public void printFromSecondInnerLocalClass(String messageText){
+
+    class InnerLocalClass{
+      void printMessage(String message){
+        System.out.println("Message from InnerLocalClass: " + message + " - Object ID: " + objectId + " - Static ID: " + staticId + " - ClassContext: " + this.getClass().getName());
       }
     }
 
@@ -40,7 +57,25 @@ public class OuterClass {
   }
 
   void printMessage(String message){
-    System.out.println("Message from OuterClass: " + message);
+    System.out.println("Message from OuterClass: " + message + " - ClassContext: " + this.getClass().getName());
+  }
+
+  public void printFromInnerAnonymousClass(String messageText){
+    Printable innerAnonymousObject = new Printable(){
+      public void printMessage(String message){
+        System.out.println("Message from InnerAnonymousClass: " + message + " - Object ID: " + objectId + " - Static ID: " + staticId + " - ClassContext: " + this.getClass().getName());
+      }
+    };
+
+    innerAnonymousObject.printMessage(messageText);
+  }
+
+  public void printFromLambdaFunction(String messageText){
+    Printable lambdaFunction = (message) -> {
+      System.out.println("Message from LambdaFunction: " + message + " - Object ID: " + objectId + " - Static ID: " + staticId + " - ClassContext: " + this.getClass().getName());
+    };
+
+    lambdaFunction.printMessage(messageText);
   }
 
   static void main() {
@@ -65,6 +100,12 @@ public class OuterClass {
 
     outerClass.printFromInnerLocalClass(messageText);
     secondOuterClass.printFromInnerLocalClass(messageText);
+
+    outerClass.printFromInnerAnonymousClass(messageText);
+    secondOuterClass.printFromInnerAnonymousClass(messageText);
+
+    outerClass.printFromLambdaFunction(messageText);
+    secondOuterClass.printFromLambdaFunction(messageText);
 
   }
 }

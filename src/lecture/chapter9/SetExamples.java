@@ -66,7 +66,12 @@ public class SetExamples {
     System.out.println("Anzahl Students: " + studentsByName.size());
     List<Student> studentListSortedbyAge = new ArrayList();
     studentListSortedbyAge.addAll(students);
-    Collections.sort(studentListSortedbyAge, (s1, s2) -> Integer.compare(s1.getAge(), s2.getAge()));
+    Collections.sort(studentListSortedbyAge, new Comparator<Student>() {
+      @Override
+      public int compare(Student o1, Student o2) {
+        return o1.getAge() - o2.getAge();
+      }
+    });
     for(Student student : studentListSortedbyAge) {
       System.out.println(student);
     }
