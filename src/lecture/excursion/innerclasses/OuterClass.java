@@ -62,8 +62,15 @@ public class OuterClass {
 
   public void printFromInnerAnonymousClass(String messageText){
     Printable innerAnonymousObject = new Printable(){
+      private int printCount = 0;
+
       public void printMessage(String message){
+        printCount++;
         System.out.println("Message from InnerAnonymousClass: " + message + " - Object ID: " + objectId + " - Static ID: " + staticId + " - ClassContext: " + this.getClass().getName());
+      }
+
+      public int getPrintCount() {
+        return printCount;
       }
     };
 
