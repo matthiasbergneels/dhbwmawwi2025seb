@@ -12,8 +12,11 @@ import java.util.Map;
 
 public class Logon extends JFrame {
 
+  private final String ACTION_LOGIN = "ACTION_LOGIN";
+  private final String ACTION_LOGOUT = "ACTION_LOGOUT";
+
   // Instanzattribute
-  private final JFormattedTextField portField;
+  private JFormattedTextField portField = null;
 
   private Logon() throws ParseException {
     super();
@@ -22,6 +25,27 @@ public class Logon extends JFrame {
 
     JComboBox<String> myComboBox = new JComboBox<>(new String[]{"SSH", "FTP", "HTTP", "HTTPS"});
 
+    // ItemListener as Lambda Function
+    myComboBox.addItemListener((e)->{
+      if(e.getStateChange() == ItemEvent.SELECTED) {
+        System.out.println("Item zustand der ComboBox hat sich geändert!");
+        System.out.println("Zustandsänderung: " + e.getStateChange());
+        System.out.println("Item: " + e.getItem());
+        System.out.println("Parameter String: " + e.paramString());
+
+        switch((String) e.getItem()){
+          case "FTP":
+            portField.setText("21");
+            break;
+          case "HTTP":
+            portField.setText("80");
+            break;
+        }
+      }
+    });
+
+    /*
+    // ItemListener as inner anonymous Class
     myComboBox.addItemListener(new ItemListener() {
       public void itemStateChanged(ItemEvent e) {
         if(e.getStateChange() == ItemEvent.SELECTED) {
@@ -41,6 +65,7 @@ public class Logon extends JFrame {
         }
       }
     });
+ */
 
     portField = new JFormattedTextField(new MaskFormatter("#####"));
     portField.setColumns(3);
@@ -105,7 +130,66 @@ public class Logon extends JFrame {
 
     // create & assign Buttons
     JButton okButton = new JButton("Login");
+    okButton.setActionCommand(ACTION_LOGIN);
     JButton cancelButton = new JButton("Beenden");
+    cancelButton.setActionCommand(ACTION_LOGOUT);
+
+    /*
+    okButton.addActionListener((e)->{
+      System.out.println("Portfeld Wert: " + portField.getText());
+    });
+
+    cancelButton.addActionListener((e)->{
+      System.out.println("Beenden");
+      System.exit(0);
+    });
+     */
+
+    ActionListener buttonListener = (e)-> {
+      System.out.println("Parameter String: " + e.paramString());
+      System.out.println("Action Command: " + e.getActionCommand());
+      System.out.println("Timestamp: " + e.getWhen());
+      System.out.println("Modifiers: " + e.getModifiers() + " - " + Integer.toBinaryString(e.getModifiers()));
+
+      if(e.getActionCommand().equals(ACTION_LOGIN)) {
+        System.out.println("Portfeld Wert: " + portField.getText());
+      }else if(e.getActionCommand().equals(ACTION_LOGOUT)) {
+        System.exit(0);
+      }
+    };
+
+    MouseListener mouseListener = new MouseListener() {
+      @Override
+      public void mouseClicked(MouseEvent e) {
+
+      }
+
+      @Override
+      public void mousePressed(MouseEvent e) {
+
+      }
+
+      @Override
+      public void mouseReleased(MouseEvent e) {
+
+      }
+
+      @Override
+      public void mouseEntered(MouseEvent e) {
+        System.out.println("Über Button: " + e.getSource());
+      }
+
+      @Override
+      public void mouseExited(MouseEvent e) {
+        System.out.println("Weg vom Button: " + e.getSource());
+      }
+    };
+
+    //okButton.addMouseListener(mouseListener);
+    //cancelButton.addMouseListener(mouseListener);
+    okButton.addActionListener(buttonListener);
+    cancelButton.addActionListener(buttonListener);
+
 
     southPanel.add(okButton);
     southPanel.add(cancelButton);
@@ -128,6 +212,39 @@ public class Logon extends JFrame {
     mainPanel.add(southPanel, BorderLayout.SOUTH);
 
     this.add(mainPanel);
+
+    JMenuBar swingMenuBar = new JMenuBar();
+    JMenu fileMenu = new JMenu("File");
+    JMenuItem printItem = new JMenuItem("Print");
+    printItem.setActionCommand(ACTION_LOGIN);
+    printItem.addActionListener(buttonListener);
+    JMenuItem exitItem = new JMenuItem("Exit");
+    exitItem.setActionCommand(ACTION_LOGOUT);
+    exitItem.addActionListener(buttonListener);
+
+    fileMenu.add(printItem);
+    fileMenu.add(exitItem);
+
+    swingMenuBar.add(fileMenu);
+
+    this.setJMenuBar(swingMenuBar);
+
+    MenuBar awtMenuBar = new MenuBar();
+    Menu awtFileMenu = new Menu("File");
+    MenuItem awtPrintItem = new MenuItem("Print");
+    awtPrintItem.setActionCommand(ACTION_LOGIN);
+    awtPrintItem.addActionListener(buttonListener);
+    MenuItem awtExitItem = new MenuItem("Exit");
+    awtExitItem.setActionCommand(ACTION_LOGOUT);
+    awtExitItem.addActionListener(buttonListener);
+
+    awtFileMenu.add(awtPrintItem);
+    awtFileMenu.add(awtExitItem);
+
+    awtMenuBar.add(awtFileMenu);
+
+    this.setMenuBar(awtMenuBar);
+
 
 
     // set JFrame behavior
