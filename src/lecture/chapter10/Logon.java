@@ -18,9 +18,29 @@ public class Logon extends JFrame {
   private Logon() throws ParseException {
     super();
     this.setTitle("Logon");
-    //this.setResizable(false);
+    this.setResizable(false);
 
     JComboBox<String> myComboBox = new JComboBox<>(new String[]{"SSH", "FTP", "HTTP", "HTTPS"});
+
+    myComboBox.addItemListener(new ItemListener() {
+      public void itemStateChanged(ItemEvent e) {
+        if(e.getStateChange() == ItemEvent.SELECTED) {
+          System.out.println("Item zustand der ComboBox hat sich geändert!");
+          System.out.println("Zustandsänderung: " + e.getStateChange());
+          System.out.println("Item: " + e.getItem());
+          System.out.println("Parameter String: " + e.paramString());
+
+          switch((String) e.getItem()){
+            case "FTP":
+              portField.setText("21");
+              break;
+            case "HTTP":
+              portField.setText("80");
+              break;
+          }
+        }
+      }
+    });
 
     portField = new JFormattedTextField(new MaskFormatter("#####"));
     portField.setColumns(3);
@@ -128,8 +148,7 @@ public class Logon extends JFrame {
         }
 
         System.out.println("Starting UI-Frame - " + Thread.currentThread());
-      }
-    );
+    });
     System.out.println("Added UI-Frame to starting queue - " + Thread.currentThread());
   }
 
