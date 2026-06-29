@@ -1,17 +1,17 @@
 package lecture.chapter12;
 
-public class LinkedNumberList {
+public class LinkedList<D> {
 
   private Node firstNode;
   private int size;
 
-  public LinkedNumberList() {
+  public LinkedList() {
     firstNode = null;
     size = 0;
   }
 
   // add new Data to List
-  public void add(int data) {
+  public void add(D data) {
     Node newNode = new Node(data);
     size++;
 
@@ -59,7 +59,7 @@ public class LinkedNumberList {
   }
 
   // get data element at index
-  public int get(int index) {
+  public D get(int index) {
     if (index < 0) {
       throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
     }
@@ -79,16 +79,17 @@ public class LinkedNumberList {
   }
 
   // remove data element from List at index
-  public void remove(int index) {
+  public D remove(int index) {
     if (index < 0 || firstNode == null) {
       throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
     }
 
     // Sonderfall: erstes Element entfernen
     if (index == 0) {
-      firstNode = firstNode.getNextNode();
+      Node toRemove = firstNode;
+      firstNode = toRemove.getNextNode();
       size--;
-      return;
+      return toRemove.getData();
     }
 
     Node previousNode = firstNode;
@@ -110,14 +111,15 @@ public class LinkedNumberList {
 
     previousNode.setNextNode(nodeToRemove.getNextNode());
     size--;
+    return nodeToRemove.getData();
   }
 
 
   private class Node {
-    private int data;
+    private D data;
     private Node nextNode;
 
-    Node(int data){
+    Node(D data){
       this.data = data;
       this.nextNode = null;
     }
@@ -130,9 +132,10 @@ public class LinkedNumberList {
       return this.nextNode;
     }
 
-    int getData(){
+    D getData(){
       return this.data;
     }
   }
+
 
 }
