@@ -6,6 +6,7 @@ import javax.swing.border.Border;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
@@ -151,7 +152,19 @@ public class Logon extends JFrame {
       System.out.println("Timestamp: " + e.getWhen());
       System.out.println("Modifiers: " + e.getModifiers() + " - " + Integer.toBinaryString(e.getModifiers()));
 
+      System.out.println(ActionEvent.ALT_MASK + " - " + Integer.toBinaryString(ActionEvent.ALT_MASK));
+      System.out.println(ActionEvent.CTRL_MASK + " - " + Integer.toBinaryString(ActionEvent.CTRL_MASK));
+      System.out.println(ActionEvent.META_MASK + " - " + Integer.toBinaryString(ActionEvent.META_MASK));
+      System.out.println(ActionEvent.SHIFT_MASK + " - " + Integer.toBinaryString(ActionEvent.SHIFT_MASK));
+
       if(e.getActionCommand().equals(ACTION_LOGIN)) {
+
+        // wenn ALT / Option Taste gedrückt ist:
+        if((e.getModifiers() & ActionEvent.ALT_MASK) == ActionEvent.ALT_MASK) {
+          System.out.println("Alt / Option-Test wurde gerdückt!");
+          System.out.println("Protokoll Wert: " + myComboBox.getSelectedItem());
+        }
+
         System.out.println("Portfeld Wert: " + portField.getText());
       }else if(e.getActionCommand().equals(ACTION_LOGOUT)) {
         System.exit(0);
