@@ -13,7 +13,12 @@ public class LinkedListRun {
 
     words.printList();
 
-    String firstIndex = words.get(0);
+    words.remove(2);
+    words.add("not");
+    words.add("funny");
+    words.printList();
+
+    String firstIndex = words.get(2);
     System.out.println(firstIndex);
 
     LinkedList everything = new LinkedList();

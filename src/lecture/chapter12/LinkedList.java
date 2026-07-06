@@ -3,44 +3,44 @@ package lecture.chapter12;
 public class LinkedList<D> {
 
   private Node firstNode;
+  private Node lastNode;
   private int size;
 
   public LinkedList() {
     firstNode = null;
+    lastNode = null;
     size = 0;
   }
 
-  // add new Data to List
+  // O(1) -> durch LastNode Referenz (Cache)
   public void add(D data) {
     Node newNode = new Node(data);
     size++;
 
     if (firstNode == null) {
       firstNode = newNode;
+      lastNode = newNode;
       return;
     }
 
-    Node currentNode = firstNode;
-    while (currentNode.getNextNode() != null) {
-      currentNode = currentNode.getNextNode();
-    }
-
-    currentNode.setNextNode(newNode);
+    lastNode.setNextNode(newNode);
+    lastNode = newNode;
   }
 
   /*
   // get current element count
   public int size() {
-    int size = 0;                               // 1ns
-    Node currentNode = firstNode;               // 1ns
-    while (currentNode != null) {               // 2ns
-      size++;                                   // 2ns
-      currentNode = currentNode.getNextNode();  // 1ns
+    int size = 0;                               // 1 ns
+    Node currentNode = firstNode;               // 1 ns
+    while (currentNode != null) {               // 2 ns
+      size++;                                   // 2 ns
+      currentNode = currentNode.getNextNode();  // 1 ns
     }
     return size;                                // 2 ns
-  }                                             // --> f(n)= n * 5ns + 4ns -> lineare Funktion --> O(n)
+  }                                             // --> f(n)= n * 5 ns + 4 ns -> lineare Funktion --> O(n)
    */
 
+  // O(1) -> durch size Attribut (Cache)
   public int size(){
     return size;
   }
@@ -88,6 +88,9 @@ public class LinkedList<D> {
     if (index == 0) {
       Node toRemove = firstNode;
       firstNode = toRemove.getNextNode();
+      if (firstNode == null) {
+        lastNode = null;
+      }
       size--;
       return toRemove.getData();
     }
@@ -110,6 +113,9 @@ public class LinkedList<D> {
     }
 
     previousNode.setNextNode(nodeToRemove.getNextNode());
+    if (nodeToRemove.getNextNode() == null) {
+      lastNode = previousNode;
+    }
     size--;
     return nodeToRemove.getData();
   }
