@@ -29,3 +29,4 @@ out
 # Mac
 .DS_Store
 .claude/settings.json
+.claude
