@@ -10,37 +10,79 @@ public class BinaryTree<D extends Comparable<D>> {
     size = 0;
   }
 
-  public void add(D data) {
+  public boolean add(D data){
+    if (root == null) {
+      root = new Node(data);
+      size++;
+      return true;
+    }
+
+    return add(root, data);
+  }
+
+  private boolean add(Node currentNode, D data){
+    int comparison = data.compareTo(currentNode.getData());
+    if (comparison < 0) {
+      if(currentNode.getLeftNode() == null){
+        currentNode.setLeftNode(new Node(data));
+        size++;
+        return true;
+      }else {
+        return add(currentNode.getLeftNode(), data);
+      }
+    }
+    if (comparison > 0) {
+      if(currentNode.getRightNode() == null){
+        currentNode.setRightNode(new Node(data));
+        size++;
+        return true;
+      }else {
+        return add(currentNode.getRightNode(), data);
+      }
+    } else {
+      return false;
+    }
+  }
+
+  public boolean addIterativ(D data) {
     Node newNode = new Node(data);
 
     if (root == null) {
       root = newNode;
-      return;
+      size++;
+      return true;
     }
 
     Node currentNode = root;
     while (true) {
       int comparison = data.compareTo(currentNode.getData());
-      if (comparison <= 0) {
+      if (comparison < 0) {
         if (currentNode.getLeftNode() == null) {
           currentNode.setLeftNode(newNode);
           size++;
-          break;
+          return true;
         }
         currentNode = currentNode.getLeftNode();
-      } else {
+      } else if(comparison > 0) {
         if (currentNode.getRightNode() == null) {
           currentNode.setRightNode(newNode);
           size++;
-          break;
+          return true;
         }
         currentNode = currentNode.getRightNode();
+      } else {
+        return false;
       }
     }
   }
 
   public int size() {
     return size;
+  }
+
+  public void clear(){
+    root = null;
+    size = 0;
   }
 
   private class Node {
