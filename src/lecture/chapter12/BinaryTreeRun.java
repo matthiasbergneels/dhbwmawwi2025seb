@@ -18,6 +18,15 @@ public class BinaryTreeRun {
 
     System.out.println("Anzahl Element: " + binaryTree.size());
 
+    System.out.println("Baum Inhalt - In Order:");
+    binaryTree.print();
+
+    System.out.println("Baum Inhalt - Pre Order:");
+    binaryTree.printPreOrder();
+
+    System.out.println("Baum Inhalt - Post Order:");
+    binaryTree.printPostOrder();
+
     System.out.println("Ende");
 
 

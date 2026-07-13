@@ -85,6 +85,97 @@ public class BinaryTree<D extends Comparable<D>> {
     size = 0;
   }
 
+
+  // Path traversal
+
+  // InOrder - print in correct sorting order
+  public void print(){
+    if(root == null){
+      System.out.println("Baum ist leer");
+      return;
+    }
+
+    inOrderTraversal(root);
+  }
+
+  // left - root - right
+  private void inOrderTraversal(Node currentNode){
+    if(currentNode.getLeftNode() != null){
+      inOrderTraversal(currentNode.getLeftNode());
+    }
+    System.out.println(currentNode.getData());
+    if(currentNode.getRightNode() != null){
+      inOrderTraversal(currentNode.getRightNode());
+    }
+  }
+
+  // PreOrder - ???
+  public void printPreOrder(){
+    if(root == null){
+      System.out.println("Baum ist leer");
+      return;
+    }
+
+    preOrderTraversal(root);
+  }
+
+  // root - left - right
+  private void preOrderTraversal(Node currentNode){
+    System.out.println(currentNode.getData());
+    if(currentNode.getLeftNode() != null){
+      preOrderTraversal(currentNode.getLeftNode());
+    }
+    if(currentNode.getRightNode() != null){
+      preOrderTraversal(currentNode.getRightNode());
+    }
+  }
+
+  // PostOrder - ???
+  public void printPostOrder(){
+    if(root == null){
+      System.out.println("Baum ist leer");
+      return;
+    }
+
+    postOrderTraversal(root);
+  }
+
+  // left - right - root
+  private void postOrderTraversal(Node currentNode){
+    if(currentNode.getLeftNode() != null){
+      postOrderTraversal(currentNode.getLeftNode());
+    }
+    if(currentNode.getRightNode() != null){
+      postOrderTraversal(currentNode.getRightNode());
+    }
+    System.out.println(currentNode.getData());
+  }
+
+  public boolean contains(D data){
+    if(root == null){
+      return false;
+    }
+
+    return contains(root, data);
+  }
+
+  private boolean contains(Node currentNode, D data){
+    int comparison = data.compareTo(currentNode.getData());
+    if(comparison == 0) {
+      return true;
+    }else if(comparison < 0) {
+      if(currentNode.getLeftNode() == null){
+        return false;
+      }
+      return contains(currentNode.getLeftNode(), data);
+    }else {
+      if(currentNode.getRightNode() == null){
+        return false;
+      }
+      return contains(currentNode.getRightNode(), data);
+    }
+  }
+
   private class Node {
     private D data;
     private Node leftNode;
