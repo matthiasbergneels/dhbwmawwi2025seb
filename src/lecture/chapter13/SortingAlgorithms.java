@@ -70,6 +70,34 @@ public class SortingAlgorithms {
     return numbers;
   }
 
+  public static int[] selectionSort(int[] numbers){
+
+    int sortedMarker = numbers.length-1;
+    long swapCount = 0;
+
+    long startTime = System.nanoTime();
+
+    while(sortedMarker > 0){
+      int maxPos = 0;
+      for(int i = 1; i <= sortedMarker; i++){
+        if(numbers[i] > numbers[maxPos]){
+          maxPos = i;
+        }
+      }
+
+      if(maxPos != sortedMarker) {
+        swap(numbers, maxPos, sortedMarker);
+        swapCount++;
+      }
+      sortedMarker--;
+    }
+
+    long stopTime = System.nanoTime();
+    printRuntimeDuration("SelectionSort", numbers.length, startTime, stopTime, swapCount);
+
+    return numbers;
+  }
+
   private static void swap(int[] array, int a, int b) {
     int temp = array[a];
     array[a] = array[b];

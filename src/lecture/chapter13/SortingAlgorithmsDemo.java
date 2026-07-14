@@ -14,5 +14,6 @@ public class SortingAlgorithmsDemo {
         System.out.println("Bubble Sort V1 sortiert: " + Arrays.toString(SortingAlgorithms.bubbleSort(toSort.clone())));
         System.out.println("Bubble Sort V2 sortiert: " + Arrays.toString(SortingAlgorithms.bubbleSortV2(toSort.clone())));
         System.out.println("Bubble Sort V3 sortiert: " + Arrays.toString(SortingAlgorithms.bubbleSortV3(toSort.clone())));
+        System.out.println("Selection Sort sortiert: " + Arrays.toString(SortingAlgorithms.selectionSort(toSort.clone())));
     }
 }
