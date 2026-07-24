@@ -47,6 +47,12 @@ class SortingAlgorithmsTest {
           "SelectionSort did not sort array correctly");
       }
 
+      @Test
+      void quickSort() {
+        assertTrue(isSorted(SortingAlgorithms.quickSort(toSort.clone())),
+          "QuickSort did not sort array correctly");
+      }
+
     }
 
     @Nested
@@ -83,6 +89,12 @@ class SortingAlgorithmsTest {
             "SelectionSort did not sort array correctly");
         }
 
+      @Test
+      void quickSort() {
+        assertTrue(isSorted(SortingAlgorithms.quickSort(toSort.clone())),
+          "QuickSort did not sort array correctly");
+      }
+
     }
 
     @Nested
@@ -118,6 +130,12 @@ class SortingAlgorithmsTest {
           assertTrue(isSorted(SortingAlgorithms.selectionSort(toSort.clone())),
             "SelectionSort did not sort array correctly");
         }
+
+      @Test
+      void quickSort() {
+        assertTrue(isSorted(SortingAlgorithms.quickSort(toSort.clone())),
+          "QuickSort did not sort array correctly");
+      }
     }
 
     // Helper Methods
